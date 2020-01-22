@@ -1,0 +1,2 @@
+class DanceDatesController < ApplicationController
+end

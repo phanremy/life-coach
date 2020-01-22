@@ -1,2 +1,13 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Dance Coach</h1>
+<h2><i>You'll never dance alone</i></h2>
+<p>Track your activities day per day & month per month, add notes, make checklist.. etc.</p>
+
+<% if current_user %>
+  <% if DanceCalendar.find_by(user: current_user).nil? %>
+    <%= simple_form_for @dance_calendar do |f| %>
+      <%= f.submit %>
+    <% end %>
+  <% else %>
+    <%= link_to "Access Calendar", dance_calendar_path(@dancecalendar) %>
+  <% end %>
+<% end %>

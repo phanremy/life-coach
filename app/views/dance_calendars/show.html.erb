@@ -1,0 +1,9 @@
+<%#= month_calendar(attribute: :created_at, end_attribute: :updated_at) do |date| %>
+<%= month_calendar do |date| %>
+  <% if DanceDate.where(date: date, dance_calendar: @dance_calendar).length > 0%>
+    <%= DanceDate.find_by(date: date, dance_calendar: @dance_calendar).dance ? "✅" : "❌❎"%>
+    <p><%#= DanceDate.find_by(date: date, dance_calendar: @dance_calendar).notes %></p>
+  <% else %>
+    ✅ ❌ ❎
+  <% end %>
+<% end %>
