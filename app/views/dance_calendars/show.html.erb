@@ -7,3 +7,46 @@
     ✅ ❌ ❎
   <% end %>
 <% end %>
+
+<% Date.new(2020, 01, 22).upto(Date.new(2020, 01, 27)) do |date| %>
+  <p><%= date %></p>
+  <% if DanceDate.where(date: date, dance_calendar: @dance_calendar).length > 0%>
+    <%= DanceDate.find_by(date: date, dance_calendar: @dance_calendar).dance ? "✅" : "❌❎"%>
+    <p><%#= DanceDate.find_by(date: date, dance_calendar: @dance_calendar).notes %></p>
+  <% else %>
+    ❎
+  <% end %>
+<% end %>
+
+
+<!-- <h1>Pages#home</h1>
+<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <% @dance_dates.each do |dance_date|%>
+    <div class="p-1 d-flex">
+      <div>
+        <p class="m-0 pt-3"><%= dance_date.date %></p>
+        <%= link_to dance_date_path(dance_date), method: :patch do %>
+          <!-- CHANGE COLOR -->
+          <% if dance_date.dance %>
+            <div class="dance-icon active">
+          <% else %>
+            <div class="dance-icon">
+          <% end %>
+            </div>
+        <% end %>
+      </div>
+      <!-- ADD NOTED -->
+      <% if dance_date.dance %>
+        <div class="notes pl-3">
+          <p><%= dance_date.notes.nil? ? "No Notes" : dance_date.notes %></p>
+          <%= simple_form_for dance_date do |f| %>
+            <%= f.input :notes %>
+            <%= f.submit 'Write notes here', class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      <% else %>
+      <% end %>
+    </div>
+  <% end %>
+</div> -->

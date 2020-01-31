@@ -1,13 +1,23 @@
-<h1>Dance Coach</h1>
-<h2><i>You'll never dance alone</i></h2>
-<p>Track your activities day per day & month per month, add notes, make checklist.. etc.</p>
+<div class="container">
+  <h1>Life Coach</h1>
+  <h2><i>You'll never be alone</i></h2>
+  <p>Track your activities day per day & month per month, add notes, make checklist.. etc.</p>
 
-<% if current_user %>
-  <% if DanceCalendar.find_by(user: current_user).nil? %>
-    <%= simple_form_for @dance_calendar do |f| %>
-      <%= f.submit %>
+  <% if current_user %>
+    <% if DanceCalendar.find_by(user: current_user).nil? %>
+      <%= simple_form_for @dance_calendar do |f| %>
+        <%= f.submit class:"btn btn-primary" %>
+      <% end %>
+    <% else %>
+      <%= link_to "Access Calendar", dance_calendar_path(@dancecalendar), class:"btn btn-primary" %>
     <% end %>
-  <% else %>
-    <%= link_to "Access Calendar", dance_calendar_path(@dancecalendar) %>
   <% end %>
-<% end %>
+
+  <%= link_to "Access Diary", diary_dates_path, class:"btn btn-primary" %>
+
+  <div class="container pt-4">
+    <div class="col">
+      <%= render 'shared/diary_form' %>
+    </div>
+  </div>
+</div>

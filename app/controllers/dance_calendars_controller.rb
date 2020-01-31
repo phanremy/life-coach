@@ -13,4 +13,16 @@ class DanceCalendarsController < ApplicationController
   def show
     @dance_calendar = DanceCalendar.find(params[:id])
   end
+
+
+  #   def update
+  #   @dance_date = DanceDate.find(params[:id])
+  #   @dance_date.dance ? @dance_date.update(dance: false) : @dance_date.update(dance: true)
+  #   if params[:dance_date]
+  #     @notes = params[:dance_date][:notes]
+  #     @dance_date.update(notes: @notes)
+  #   end
+  #   redirect_to root_path
+  #   authorize @dance_date
+  #   end
 end

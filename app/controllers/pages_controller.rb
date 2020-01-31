@@ -7,5 +7,7 @@ class PagesController < ApplicationController
     else
       @dancecalendar = DanceCalendar.find_by(user: current_user)
     end
+
+    @diary_date = DiaryDate.new
   end
 end

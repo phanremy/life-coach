@@ -1,0 +1,30 @@
+<div class="container">
+  <%= link_to "new", new_diary_date_path, class:"btn btn-primary mt-3" %>
+  <%= link_to "days with code", "#", class:"btn btn-secondary mt-3" %>
+  <%= link_to "days with dance", "#", class:"btn btn-secondary mt-3" %>
+
+  <div class="d-flex">
+    <% @diary_dates.each do |diary_date| %>
+      <div class="diary-card mt-5 pt-3">
+        <b><%= diary_date.date %></b>
+        <br>
+        <%= link_to "edit", edit_diary_date_path(diary_date), class:"btn btn-success"  %>
+        <%= link_to "delete", diary_date_path(diary_date), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-danger"  %>
+        <br>
+        <%= diary_date.dance ? "Dance: ✅" : "Dance: ❎" %>
+        ||
+        <%= diary_date.code ? "Code: ✅" : "Code: ❎"  %>
+        <% if diary_date.dance %>
+          <p><b>Dance notes:</b></p>
+          <p><%= diary_date.dance_notes %></p>
+        <% end %>
+        <% if diary_date.code %>
+          <p><b>Code notes:</b></p>
+          <p><%= diary_date.code_notes %></p>
+        <% end %>
+
+        <br>
+      </div>
+    <% end %>
+  </div>
+</div>
